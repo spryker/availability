@@ -14,9 +14,9 @@ use Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStockFacadeInterfac
 use Spryker\Zed\Availability\Business\Model\SellableInterface;
 
 /**
- * Class AvailabilityDependencyContainer
+ * Class AvailabilityBusinessFactory
  */
-class AvailabilityDependencyContainer extends AbstractBusinessFactory
+class AvailabilityBusinessFactory extends AbstractBusinessFactory
 {
 
     /**
