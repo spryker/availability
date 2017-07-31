@@ -4,7 +4,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Unit\Spryker\Zed\Availability\Business\Model;
+namespace SprykerTest\Zed\Availability\Business\Model;
 
 use Orm\Zed\Availability\Persistence\SpyAvailability;
 use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract;
@@ -20,13 +20,14 @@ use Spryker\Zed\Availability\Dependency\Facade\AvailabilityToTouchInterface;
 use Spryker\Zed\Availability\Persistence\AvailabilityQueryContainerInterface;
 
 /**
- * @group Unit
- * @group Spryker
+ * Auto-generated group annotations
+ * @group SprykerTest
  * @group Zed
  * @group Availability
  * @group Business
  * @group Model
  * @group AvailabilityHandlerTest
+ * Add your own group annotations below this line
  */
 class AvailabilityHandlerTest extends PHPUnit_Framework_TestCase
 {

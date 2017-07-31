@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Functional\Spryker\Zed\Availability\Business;
+namespace SprykerTest\Zed\Availability\Business;
 
 use Codeception\Test\Unit;
 use Orm\Zed\Product\Persistence\SpyProduct;
@@ -22,12 +22,13 @@ use Spryker\Zed\Availability\Business\AvailabilityFacade;
 use Spryker\Zed\Kernel\Container;
 
 /**
- * @group Functional
- * @group Spryker
+ * Auto-generated group annotations
+ * @group SprykerTest
  * @group Zed
  * @group Availability
  * @group Business
  * @group SellableTest
+ * Add your own group annotations below this line
  */
 class SellableTest extends Unit
 {
