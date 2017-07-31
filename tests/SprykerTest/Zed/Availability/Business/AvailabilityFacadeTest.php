@@ -4,7 +4,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Functional\Spryker\Zed\Availability\Business;
+namespace SprykerTest\Zed\Availability\Business;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
@@ -21,12 +21,14 @@ use Orm\Zed\Stock\Persistence\SpyStockProduct;
 use Spryker\Zed\Availability\Business\AvailabilityFacade;
 
 /**
- * @group Functional
- * @group Spryker
+ * Auto-generated group annotations
+ * @group SprykerTest
  * @group Zed
  * @group Availability
  * @group Business
+ * @group Facade
  * @group AvailabilityFacadeTest
+ * Add your own group annotations below this line
  */
 class AvailabilityFacadeTest extends Unit
 {
