@@ -15,4 +15,12 @@ interface AvailabilityToUtilQuantityServiceInterface
      * @return float
      */
     public function roundQuantity(float $quantity): float;
+
+    /**
+     * @param float $firstQuantity
+     * @param float $secondQuantity
+     *
+     * @return bool
+     */
+    public function isQuantitiesEqual(float $firstQuantity, float $secondQuantity): bool;
 }
