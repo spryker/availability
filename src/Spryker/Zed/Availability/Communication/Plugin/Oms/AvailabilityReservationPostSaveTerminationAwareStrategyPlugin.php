@@ -9,7 +9,7 @@ namespace Spryker\Zed\Availability\Communication\Plugin\Oms;
 
 use Generated\Shared\Transfer\ReservationRequestTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationHandlerTerminationAwareStrategyPluginInterface;
+use Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationPostSaveTerminationAwareStrategyPluginInterface;
 
 /**
  * @method \Spryker\Zed\Availability\AvailabilityConfig getConfig()
@@ -17,7 +17,7 @@ use Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationHandlerTerminationAwar
  * @method \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface getFacade()
  * @method \Spryker\Zed\Availability\Communication\AvailabilityCommunicationFactory getFactory()
  */
-class AvailabilityReservationHandlerTerminationAwareStrategyPlugin extends AbstractPlugin implements ReservationHandlerTerminationAwareStrategyPluginInterface
+class AvailabilityReservationPostSaveTerminationAwareStrategyPlugin extends AbstractPlugin implements ReservationPostSaveTerminationAwareStrategyPluginInterface
 {
     /**
      * {@inheritDoc}
