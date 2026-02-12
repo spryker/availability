@@ -253,6 +253,7 @@ class Sellable implements SellableInterface
         $sellableItemResponseTransfer->setAvailableQuantity(0);
 
         if ($productConcreteAvailabilityTransfer) {
+            $sellableItemResponseTransfer->setIsNeverOutOfStock($productConcreteAvailabilityTransfer->getIsNeverOutOfStock());
             $sellableItemResponseTransfer->setAvailableQuantity($productConcreteAvailabilityTransfer->getAvailability());
         }
 

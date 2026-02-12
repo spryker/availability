@@ -19,6 +19,7 @@
         <property name="isSellable" type="bool"/>
         <property name="availableQuantity" type="decimal"/>
         <property name="productAvailabilityCriteria" type="ProductAvailabilityCriteria" strict="true"/>
+        <property name="isNeverOutOfStock" type="bool" strict="true"/>
     </transfer>
 
     <transfer name="SellableItemsRequest">
@@ -90,6 +91,8 @@
         <property name="sku" type="string"/>
         <property name="quantity" type="int"/>
         <property name="amount" type="decimal"/>
+        <property name="stockQuantity" type="float" strict="true"/>
+        <property name="isNeverOutOfStock" type="bool" strict="true"/>
     </transfer>
 
     <transfer name="StockProduct">
