@@ -50,7 +50,7 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
     protected const FK_PRODUCT = 'fk_product';
 
     /**
-     * @var list<\Generated\Shared\Transfer\StoreTransfer>
+     * @var array<\Generated\Shared\Transfer\StoreTransfer>
      */
     protected static $allStoreTransfersCache = [];
 
@@ -469,7 +469,7 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
     }
 
     /**
-     * @return list<\Generated\Shared\Transfer\StoreTransfer>
+     * @return array<\Generated\Shared\Transfer\StoreTransfer>
      */
     protected function getAllStoreTransfersCache(): array
     {

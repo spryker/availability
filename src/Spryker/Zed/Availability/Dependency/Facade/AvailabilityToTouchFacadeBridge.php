@@ -39,6 +39,7 @@ class AvailabilityToTouchFacadeBridge implements AvailabilityToTouchFacadeInterf
      */
     public function isTouchEnabled(): bool
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (!method_exists($this->touchFacade, 'isTouchEnabled')) {
             return true;
         }
