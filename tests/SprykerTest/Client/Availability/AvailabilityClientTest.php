@@ -297,7 +297,7 @@ class AvailabilityClientTest extends Unit
 
         $availabilityClientMock->expects($this->any())
             ->method('getFactory')
-            ->will($this->returnValue($factoryMock));
+            ->willReturn($factoryMock);
 
         return $availabilityClientMock;
     }
