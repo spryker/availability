@@ -32,12 +32,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
      */
     protected const COL_ID_PRODUCT = 'id_product';
 
-    /**
-     * @param int $idProductConcrete
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     public function findProductConcreteAvailabilityByIdProductConcreteAndStore(
         int $idProductConcrete,
         StoreTransfer $storeTransfer
@@ -149,12 +143,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
         return $productConcreteAvailabilityTransfers;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     public function findProductConcreteAvailabilityBySkuAndStore(
         string $concreteSku,
         StoreTransfer $storeTransfer
@@ -179,12 +167,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
             );
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findProductAbstractAvailabilityBySkuAndStore(
         string $abstractSku,
         StoreTransfer $storeTransfer
@@ -250,11 +232,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
         return $idAvailabilityAbstract;
     }
 
-    /**
-     * @param string $concreteSku
-     *
-     * @return string|null
-     */
     public function getAbstractSkuFromProductConcrete(string $concreteSku): ?string
     {
         return $this->getFactory()
@@ -267,11 +244,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
             ->findOne();
     }
 
-    /**
-     * @param int $idProductConcrete
-     *
-     * @return string|null
-     */
     public function getProductConcreteSkuByConcreteId(int $idProductConcrete): ?string
     {
         return $this->getFactory()
@@ -327,11 +299,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
             ->getData();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer $productAvailabilityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityCollectionTransfer
-     */
     public function getProductConcreteAvailabilityCollection(
         ProductAvailabilityCriteriaTransfer $productAvailabilityCriteriaTransfer
     ): ProductConcreteAvailabilityCollectionTransfer {
@@ -388,12 +355,6 @@ class AvailabilityRepository extends AbstractRepository implements AvailabilityR
             );
     }
 
-    /**
-     * @param \Orm\Zed\Availability\Persistence\SpyAvailabilityQuery $availabilityQuery
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer $productAvailabilityCriteriaTransfer
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityQuery
-     */
     protected function applyFilters(
         SpyAvailabilityQuery $availabilityQuery,
         ProductAvailabilityCriteriaTransfer $productAvailabilityCriteriaTransfer

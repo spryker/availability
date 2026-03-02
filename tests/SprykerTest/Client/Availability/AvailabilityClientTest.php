@@ -41,9 +41,6 @@ class AvailabilityClientTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -51,9 +48,6 @@ class AvailabilityClientTest extends Unit
         $this->tester->addDependencies();
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAvailabilityByIdProductAbstractReturnsProductAvailabilityTransferObject(): void
     {
         // Arrange
@@ -67,9 +61,6 @@ class AvailabilityClientTest extends Unit
         $this->assertSame(StorageAvailabilityTransfer::class, get_class($actualProductAvailability));
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAvailabilityByIdProductAbstractReturnsNullWhenProductAvailabilityWasNotFoundInStorage(): void
     {
         // Arrange
@@ -83,9 +74,6 @@ class AvailabilityClientTest extends Unit
         $this->assertNull($actualResult);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAvailabilityByIdProductAbstractReturnsProductAvailabilityTransferObject(): void
     {
         // Arrange
@@ -99,9 +87,6 @@ class AvailabilityClientTest extends Unit
         $this->assertSame(StorageAvailabilityTransfer::class, get_class($actualProductAvailability));
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAvailabilityByIdProductAbstractThrowsExceptionWhenProductAvailabilityWasNotFoundInStorage(): void
     {
         // Arrange
@@ -115,9 +100,6 @@ class AvailabilityClientTest extends Unit
         $this->createAvailabilityClient()->getProductAvailabilityByIdProductAbstract(static::ID_PRODUCT_ABSTRACT);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAvailabilityCallGenerateKeyContainsStoreName(): void
     {
         // Arrange
@@ -153,9 +135,6 @@ class AvailabilityClientTest extends Unit
         $this->assertSame(StorageAvailabilityTransfer::class, get_class($actualProductAvailability));
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAvailabilityCallGenerateKeyDoesNotContainStoreName(): void
     {
         // Arrange
@@ -189,9 +168,6 @@ class AvailabilityClientTest extends Unit
         $this->assertSame(StorageAvailabilityTransfer::class, get_class($actualProductAvailability));
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAvailabilityCallGenerateKeyContainsStoreName(): void
     {
         // Arrange
@@ -227,9 +203,6 @@ class AvailabilityClientTest extends Unit
         $this->assertSame(StorageAvailabilityTransfer::class, get_class($actualProductAvailability));
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAvailabilityCallGenerateKeyDoesNotContainStoreName(): void
     {
         // Arrange
@@ -275,9 +248,6 @@ class AvailabilityClientTest extends Unit
         $this->tester->setDependency(AvailabilityDependencyProvider::KV_STORAGE, $availabilityToStorageBridge);
     }
 
-    /**
-     * @return \Spryker\Client\Availability\AvailabilityClientInterface
-     */
     protected function createAvailabilityClient(): AvailabilityClientInterface
     {
         return new AvailabilityClient();
@@ -351,11 +321,6 @@ class AvailabilityClientTest extends Unit
         return $availabilityStorageMock;
     }
 
-    /**
-     * @param array $storageReturn
-     *
-     * @return \Spryker\Client\Availability\Dependency\Client\AvailabilityToStorageInterface
-     */
     protected function getStorageClientMock(array $storageReturn = []): AvailabilityToStorageInterface
     {
         $availabilityToStorageBridge = $this->getMockBuilder(AvailabilityToStorageInterface::class)->getMock();
@@ -364,9 +329,6 @@ class AvailabilityClientTest extends Unit
         return $availabilityToStorageBridge;
     }
 
-    /**
-     * @return \Spryker\Client\Availability\KeyBuilder\AvailabilityResourceKeyBuilder
-     */
     protected function getAvailabilityResourceKeyBuilderMock(): AvailabilityResourceKeyBuilder
     {
         $availabilityResourceKeyBuilderMock = $this->getMockBuilder(AvailabilityResourceKeyBuilder::class)
@@ -377,9 +339,6 @@ class AvailabilityClientTest extends Unit
         return $availabilityResourceKeyBuilderMock;
     }
 
-    /**
-     * @return \Spryker\Client\Availability\Dependency\Client\AvailabilityToStoreClientInterface
-     */
     protected function getAvailabilityToStoreClientMock(): AvailabilityToStoreClientInterface
     {
         $availabilityToStoreClientMock = $this->getMockBuilder(AvailabilityToStoreClientInterface::class)

@@ -25,11 +25,6 @@ interface AvailabilityToProductFacadeInterface
      */
     public function hasProductConcrete($sku);
 
-    /**
-     * @param int $idProduct
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer|null
-     */
     public function findProductConcreteById(int $idProduct): ?ProductConcreteTransfer;
 
     /**

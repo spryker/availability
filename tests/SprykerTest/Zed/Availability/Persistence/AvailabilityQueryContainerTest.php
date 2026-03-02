@@ -73,9 +73,6 @@ class AvailabilityQueryContainerTest extends Unit
      */
     protected $stockTransfers = [];
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -94,9 +91,6 @@ class AvailabilityQueryContainerTest extends Unit
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryAllAvailabilityAbstractsReturnCorrectQueryObject(): void
     {
         //Act
@@ -106,9 +100,6 @@ class AvailabilityQueryContainerTest extends Unit
         $this->assertInstanceOf(SpyAvailabilityAbstractQuery::class, $query);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryAvailabilityAbstractWithStockByIdLocaleReturnsCorrectData(): void
     {
         //Arrange
@@ -132,9 +123,6 @@ class AvailabilityQueryContainerTest extends Unit
         $this->assertEquals($productQuantity * 2, $queryResult[$numberOfProducts - 1]->getVirtualColumn(AvailabilityQueryContainer::STOCK_QUANTITY));
     }
 
-    /**
-     * @return void
-     */
     public function testQueryAvailabilityWithStockByIdProductAbstractAndIdLocaleReturnsCorrectData(): void
     {
         //Arrange
@@ -158,9 +146,6 @@ class AvailabilityQueryContainerTest extends Unit
         $this->assertEquals($productQuantity * 2, $queryResult[0][AvailabilityQueryContainer::STOCK_QUANTITY]);
     }
 
-    /**
-     * @return void
-     */
     public function testQuerySpyProductAbstractAvailabilityWithStockWillReturnCorrectDataWhenStoreDoesNotHaveAssignedStocks(): void
     {
         // Arrange

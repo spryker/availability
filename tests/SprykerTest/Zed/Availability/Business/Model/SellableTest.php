@@ -73,9 +73,6 @@ class SellableTest extends Unit
         $this->assertTrue($isSellable);
     }
 
-    /**
-     * @return array
-     */
     public function isProductSellableStoresDataProvider(): array
     {
         return [
@@ -109,9 +106,6 @@ class SellableTest extends Unit
         $this->assertTrue($isSellable);
     }
 
-    /**
-     * @return void
-     */
     public function testAreProductConcretesSellableForStoreWhenProductOutOfStockShouldReturnIsNotSellable(): void
     {
         // Arrange
@@ -166,9 +160,6 @@ class SellableTest extends Unit
         $this->assertFalse($sellableItemsResponseTransferMap[static::SKU_PRODUCT_SECOND]->getIsSellable());
     }
 
-    /**
-     * @return void
-     */
     public function testAreProductConcretesSellableForStoreWhenProductsInStockShouldReturnIsSellable(): void
     {
         // Arrange
@@ -223,9 +214,6 @@ class SellableTest extends Unit
         $this->assertTrue($sellableItemsResponseTransferMap[static::SKU_PRODUCT_SECOND]->getIsSellable());
     }
 
-    /**
-     * @return void
-     */
     public function testAreProductConcretesSellableForStoreWhenProductsAreNeverOutOfStockShouldReturnIsSellable(): void
     {
         // Arrange
@@ -278,9 +266,6 @@ class SellableTest extends Unit
         $this->assertTrue($sellableItemsResponseTransferMap[static::SKU_PRODUCT_SECOND]->getIsSellable());
     }
 
-    /**
-     * @return array
-     */
     public function reservedItemsAndExistingStockDataProvider(): array
     {
         return [
@@ -290,9 +275,6 @@ class SellableTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testAreProductsSellableForStoreReturnsCriteriaInResponse(): void
     {
         // Arrange
@@ -354,19 +336,11 @@ class SellableTest extends Unit
         return $sellableItemsResponseTransferMap;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     protected function createSellableItemsResponseTransfer(): SellableItemsResponseTransfer
     {
         return new SellableItemsResponseTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsRequestTransfer
-     */
     protected function createSellableItemsRequestTransfer(StoreTransfer $storeTransfer): SellableItemsRequestTransfer
     {
         $sellableItemsRequestTransfer = new SellableItemsRequestTransfer();
@@ -449,9 +423,6 @@ class SellableTest extends Unit
         return $availabilityStrategyPluginMock;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     protected function createStoreTransfer(): StoreTransfer
     {
         return (new StoreTransfer())->setName('DE')->setIdStore(1);

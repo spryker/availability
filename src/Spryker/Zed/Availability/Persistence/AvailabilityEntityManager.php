@@ -48,12 +48,6 @@ class AvailabilityEntityManager extends AbstractEntityManager implements Availab
         return $isAvailabilityChanged;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer
-     */
     public function saveProductAbstractAvailability(
         ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer,
         StoreTransfer $storeTransfer
@@ -78,24 +72,12 @@ class AvailabilityEntityManager extends AbstractEntityManager implements Availab
         return $productAbstractAvailabilityTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Availability\Persistence\SpyAvailability $availabilityEntity
-     *
-     * @return bool
-     */
     protected function isAvailabilityChanged(SpyAvailability $availabilityEntity): bool
     {
         return $availabilityEntity->isColumnModified(SpyAvailabilityTableMap::COL_IS_NEVER_OUT_OF_STOCK) ||
             $availabilityEntity->isColumnModified(SpyAvailabilityTableMap::COL_QUANTITY);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param string $abstractSku
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailability
-     */
     protected function prepareAvailabilityEntityForSave(
         ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer,
         StoreTransfer $storeTransfer,

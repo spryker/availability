@@ -16,8 +16,5 @@ interface AvailabilityToProductQueryContainerInterface
      */
     public function queryProductAbstract();
 
-    /**
-     * @return \Orm\Zed\Product\Persistence\SpyProductQuery
-     */
     public function queryProduct(): SpyProductQuery;
 }

@@ -14,24 +14,11 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface ProductAvailabilityReaderInterface
 {
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findOrCreateProductAbstractAvailabilityBySkuForStore(
         string $abstractSku,
         StoreTransfer $storeTransfer
     ): ?ProductAbstractAvailabilityTransfer;
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer|null $productAvailabilityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     public function findOrCreateProductConcreteAvailabilityBySkuForStore(
         string $concreteSku,
         StoreTransfer $storeTransfer,

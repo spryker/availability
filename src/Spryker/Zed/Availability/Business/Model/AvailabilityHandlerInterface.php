@@ -16,11 +16,6 @@ use Spryker\DecimalObject\Decimal;
 
 interface AvailabilityHandlerInterface
 {
-    /**
-     * @param string $concreteSku
-     *
-     * @return void
-     */
     public function updateAvailability(string $concreteSku): void;
 
     /**
@@ -30,53 +25,23 @@ interface AvailabilityHandlerInterface
      */
     public function touchAvailabilityAbstract($idAvailabilityAbstract);
 
-    /**
-     * @param string $concreteSku
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return int
-     */
     public function saveAndTouchAvailability(string $concreteSku, Decimal $quantity, StoreTransfer $storeTransfer): int;
 
-    /**
-     * @param int $idProductConcrete
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer
-     */
     public function updateProductConcreteAvailabilityById(
         int $idProductConcrete,
         StoreTransfer $storeTransfer
     ): ProductConcreteAvailabilityTransfer;
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer
-     */
     public function updateProductConcreteAvailabilityBySku(
         string $concreteSku,
         StoreTransfer $storeTransfer
     ): ProductConcreteAvailabilityTransfer;
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer
-     */
     public function updateProductAbstractAvailabilityBySku(
         string $abstractSku,
         StoreTransfer $storeTransfer
     ): ProductAbstractAvailabilityTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityPostEditResponseTransfer
-     */
     public function updateAvailabilityByDynamicEntityRequest(
         DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
     ): DynamicEntityPostEditResponseTransfer;

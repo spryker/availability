@@ -469,12 +469,6 @@ class AvailabilityQueryContainer extends AbstractQueryContainer implements Avail
         return $availabilityAbstractQuery;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $query
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
-     */
     protected function joinOmsProductReservation(SpyProductAbstractQuery $query, int $idStore): SpyProductAbstractQuery
     {
         $omsProductReservationFkStoreCriterion = (new Criteria())->getNewCriterion(

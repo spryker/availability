@@ -63,12 +63,6 @@ class ProductAvailabilityReader implements ProductAvailabilityReaderInterface
         $this->availabilityStrategyPlugins = $availabilityStrategyPlugins;
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findOrCreateProductAbstractAvailabilityBySkuForStore(
         string $abstractSku,
         StoreTransfer $storeTransfer
@@ -84,12 +78,6 @@ class ProductAvailabilityReader implements ProductAvailabilityReaderInterface
         return $productAbstractAvailabilityTransfer;
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     protected function updateProductAbstractAvailabilityBySku(
         string $abstractSku,
         StoreTransfer $storeTransfer
@@ -102,13 +90,6 @@ class ProductAvailabilityReader implements ProductAvailabilityReaderInterface
             ->updateProductAbstractAvailabilityBySku($abstractSku, $storeTransfer);
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer|null $productAvailabilityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     public function findOrCreateProductConcreteAvailabilityBySkuForStore(
         string $concreteSku,
         StoreTransfer $storeTransfer,
@@ -134,12 +115,6 @@ class ProductAvailabilityReader implements ProductAvailabilityReaderInterface
         return $productConcreteAvailabilityTransfer;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     protected function updateProductConcreteAvailabilityBySku(
         string $concreteSku,
         StoreTransfer $storeTransfer
@@ -152,11 +127,6 @@ class ProductAvailabilityReader implements ProductAvailabilityReaderInterface
             ->updateProductConcreteAvailabilityBySku($concreteSku, $storeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     protected function assertStoreTransfer(StoreTransfer $storeTransfer): StoreTransfer
     {
         if ($storeTransfer->getIdStore() !== null) {

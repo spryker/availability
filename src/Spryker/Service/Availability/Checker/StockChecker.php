@@ -16,19 +16,11 @@ class StockChecker implements StockCheckerInterface
      */
     protected $availabilityConfig;
 
-    /**
-     * @param \Spryker\Service\Availability\AvailabilityConfig $availabilityConfig
-     */
     public function __construct(AvailabilityConfig $availabilityConfig)
     {
         $this->availabilityConfig = $availabilityConfig;
     }
 
-    /**
-     * @param string $productConcretesNeverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isAbstractProductNeverOutOfStock(string $productConcretesNeverOutOfStockSet): bool
     {
         return (bool)preg_match($this->availabilityConfig->getIsNeverOutOfStockPattern(), $productConcretesNeverOutOfStockSet);

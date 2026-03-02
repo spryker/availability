@@ -15,11 +15,6 @@ use Spryker\DecimalObject\Decimal;
 
 interface SellableInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     public function areProductsSellableForStore(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer
     ): SellableItemsResponseTransfer;
@@ -36,25 +31,11 @@ interface SellableInterface
         SellableItemsRequestTransfer $sellableItemsRequestTransfer
     ): SellableItemsResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     * @param \Generated\Shared\Transfer\SellableItemsResponseTransfer $sellableItemsResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     public function areProductConcretesSellableForStore(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer,
         SellableItemsResponseTransfer $sellableItemsResponseTransfer
     ): SellableItemsResponseTransfer;
 
-    /**
-     * @param string $concreteSku
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer|null $productAvailabilityCriteriaTransfer
-     *
-     * @return bool
-     */
     public function isProductSellableForStore(
         string $concreteSku,
         Decimal $quantity,
@@ -62,10 +43,5 @@ interface SellableInterface
         ?ProductAvailabilityCriteriaTransfer $productAvailabilityCriteriaTransfer = null
     ): bool;
 
-    /**
-     * @param int $idProductConcrete
-     *
-     * @return bool
-     */
     public function isProductConcreteAvailable(int $idProductConcrete): bool;
 }

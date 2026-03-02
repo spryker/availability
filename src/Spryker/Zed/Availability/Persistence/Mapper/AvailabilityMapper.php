@@ -36,10 +36,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
      */
     protected StoreMapper $storeMapper;
 
-    /**
-     * @param \Spryker\Service\Availability\AvailabilityServiceInterface $availabilityService
-     * @param \Spryker\Zed\Availability\Persistence\Propel\Mapper\StoreMapper $storeMapper
-     */
     public function __construct(
         AvailabilityServiceInterface $availabilityService,
         StoreMapper $storeMapper
@@ -48,12 +44,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         $this->storeMapper = $storeMapper;
     }
 
-    /**
-     * @param \Orm\Zed\Availability\Persistence\SpyAvailability $availabilityEntity
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer
-     */
     public function mapAvailabilityEntityToProductConcreteAvailabilityTransfer(
         SpyAvailability $availabilityEntity,
         ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer
@@ -64,12 +54,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
             ->setIsNeverOutOfStock($availabilityEntity->getIsNeverOutOfStock());
     }
 
-    /**
-     * @param array $availabilityAbstractEntityArray
-     * @param \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer
-     */
     public function mapAvailabilityEntityToProductAbstractAvailabilityTransfer(
         array $availabilityAbstractEntityArray,
         ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer
@@ -102,13 +86,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         return $productConcreteAvailabilityCollectionTransfer;
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\Collection $availabilityEntities
-     * @param \Orm\Zed\Product\Persistence\SpyProduct|null $productConcreteEntity
-     * @param \Generated\Shared\Transfer\ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAvailabilityDataTransfer
-     */
     public function mapAvailabilityEntitiesAndProductConcreteEntityToProductAvailabilityDataTransfer(
         Collection $availabilityEntities,
         ?SpyProduct $productConcreteEntity,
@@ -135,11 +112,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         return $productAvailabilityDataTransfer;
     }
 
-    /**
-     * @param array $availabilityAbstractData
-     *
-     * @return array
-     */
     protected function processAvailabilityAbstractEntityArray(array $availabilityAbstractData): array
     {
         if (array_key_exists(ProductAbstractAvailabilityTransfer::RESERVATION_QUANTITY, $availabilityAbstractData)) {
@@ -163,11 +135,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         return $availabilityAbstractData;
     }
 
-    /**
-     * @param string $reservationAggregationSet
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateReservation(string $reservationAggregationSet): Decimal
     {
         $reservation = new Decimal(0);
@@ -188,12 +155,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         return $reservation;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProduct $productConcreteEntity
-     * @param \Generated\Shared\Transfer\ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
-     *
-     * @return void
-     */
     protected function expandProductAvailabilityDataTransferWithStock(
         SpyProduct $productConcreteEntity,
         ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
@@ -217,12 +178,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         }
     }
 
-    /**
-     * @param \Orm\Zed\Availability\Persistence\SpyAvailability $availabilityEntity
-     * @param \Generated\Shared\Transfer\ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
-     *
-     * @return void
-     */
     protected function extendProductAvailabilityDataTransferWithConcreteAvailability(
         SpyAvailability $availabilityEntity,
         ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
@@ -235,12 +190,6 @@ class AvailabilityMapper implements AvailabilityMapperInterface
         );
     }
 
-    /**
-     * @param \Orm\Zed\Availability\Persistence\SpyAvailability $availabilityEntity
-     * @param \Generated\Shared\Transfer\ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
-     *
-     * @return void
-     */
     protected function extendProductAvailabilityDataTransferWithAbstractAvailability(
         SpyAvailability $availabilityEntity,
         ProductAvailabilityDataTransfer $productAvailabilityDataTransfer

@@ -67,11 +67,6 @@ class Sellable implements SellableInterface
         $this->batchAvailabilityStrategyPlugins = $batchAvailabilityStrategyPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     public function areProductsSellableForStore(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer
     ): SellableItemsResponseTransfer {
@@ -91,11 +86,6 @@ class Sellable implements SellableInterface
         return $sellableItemsResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     public function areProductsSellableForStoreWithDefaultBatchStrategy(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer
     ): SellableItemsResponseTransfer {
@@ -111,11 +101,6 @@ class Sellable implements SellableInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsRequestTransfer
-     */
     protected function assertStoreTransferInSellableItemsRequestTransfer(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer
     ): SellableItemsRequestTransfer {
@@ -126,12 +111,6 @@ class Sellable implements SellableInterface
         return $sellableItemsRequestTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     * @param \Generated\Shared\Transfer\SellableItemsResponseTransfer $sellableItemsResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     protected function processSellableItemsRequestInBatch(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer,
         SellableItemsResponseTransfer $sellableItemsResponseTransfer
@@ -146,12 +125,6 @@ class Sellable implements SellableInterface
         return $sellableItemsResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     * @param \Generated\Shared\Transfer\SellableItemsResponseTransfer $sellableItemsResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     protected function processSellableItemsRequestSuccessively(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer,
         SellableItemsResponseTransfer $sellableItemsResponseTransfer
@@ -172,12 +145,6 @@ class Sellable implements SellableInterface
         return $sellableItemsResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemsRequestTransfer $sellableItemsRequestTransfer
-     * @param \Generated\Shared\Transfer\SellableItemsResponseTransfer $sellableItemsResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsResponseTransfer
-     */
     public function areProductConcretesSellableForStore(
         SellableItemsRequestTransfer $sellableItemsRequestTransfer,
         SellableItemsResponseTransfer $sellableItemsResponseTransfer
@@ -199,12 +166,6 @@ class Sellable implements SellableInterface
         return $sellableItemsResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemRequestTransfer $sellableItemRequestTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemResponseTransfer|null
-     */
     protected function processSellableItemRequestForCustomProducts(
         SellableItemRequestTransfer $sellableItemRequestTransfer,
         StoreTransfer $storeTransfer
@@ -236,12 +197,6 @@ class Sellable implements SellableInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SellableItemRequestTransfer $sellableItemRequestTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null $productConcreteAvailabilityTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemResponseTransfer
-     */
     protected function getSellableItemResponseTransfer(
         SellableItemRequestTransfer $sellableItemRequestTransfer,
         ?ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer
@@ -350,14 +305,6 @@ class Sellable implements SellableInterface
         return $productConcreteAvailabilityTransfersMap;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\ProductAvailabilityCriteriaTransfer|null $productAvailabilityCriteriaTransfer
-     *
-     * @return bool
-     */
     public function isProductSellableForStore(
         string $concreteSku,
         Decimal $quantity,
@@ -388,11 +335,6 @@ class Sellable implements SellableInterface
         return $this->isProductConcreteSellable($productConcreteAvailabilityTransfer, $quantity);
     }
 
-    /**
-     * @param int $idProductConcrete
-     *
-     * @return bool
-     */
     public function isProductConcreteAvailable(int $idProductConcrete): bool
     {
         $storeTransfer = $this->storeFacade->getCurrentStore(true);
@@ -407,12 +349,6 @@ class Sellable implements SellableInterface
         return $this->isProductConcreteSellable($productConcreteAvailabilityTransfer, new Decimal(0));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null $productConcreteAvailabilityTransfer
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     *
-     * @return bool
-     */
     protected function isProductConcreteSellable(
         ?ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer,
         Decimal $quantity
@@ -435,11 +371,6 @@ class Sellable implements SellableInterface
         return $availability->greatherThanOrEquals($quantity);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     protected function assertStoreTransfer(StoreTransfer $storeTransfer): StoreTransfer
     {
         if ($storeTransfer->getIdStore() !== null) {

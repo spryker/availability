@@ -41,33 +41,21 @@ class AvailabilityPersistenceFactory extends AbstractPersistenceFactory
         return SpyAvailabilityAbstractQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Persistence\Mapper\AvailabilityMapperInterface
-     */
     public function createAvailabilityMapper(): AvailabilityMapperInterface
     {
         return new AvailabilityMapper($this->getAvailabilityService(), $this->createStoreMapper());
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Persistence\Propel\Mapper\StoreMapper
-     */
     public function createStoreMapper(): StoreMapper
     {
         return new StoreMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\QueryContainer\AvailabilityToProductQueryContainerInterface
-     */
     public function getProductQueryContainer(): AvailabilityToProductQueryContainerInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::QUERY_CONTAINER_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Service\Availability\AvailabilityServiceInterface
-     */
     public function getAvailabilityService(): AvailabilityServiceInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::SERVICE_AVAILABILITY);

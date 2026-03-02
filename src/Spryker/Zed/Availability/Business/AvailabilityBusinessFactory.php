@@ -40,9 +40,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class AvailabilityBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Availability\Business\Model\SellableInterface
-     */
     public function createSellableModel(): SellableInterface
     {
         return new Sellable(
@@ -54,9 +51,6 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Model\ProductAvailabilityCalculatorInterface
-     */
     public function createProductAvailabilityCalculator(): ProductAvailabilityCalculatorInterface
     {
         return new ProductAvailabilityCalculator(
@@ -66,9 +60,6 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Model\AvailabilityHandlerInterface
-     */
     public function createAvailabilityHandler(): AvailabilityHandlerInterface
     {
         return new AvailabilityHandler(
@@ -83,9 +74,6 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Model\ProductAvailabilityReaderInterface
-     */
     public function createProductAvailabilityReader(): ProductAvailabilityReaderInterface
     {
         return new ProductAvailabilityReader(
@@ -111,9 +99,6 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Reader\AvailabilityReaderInterface
-     */
     public function createAvailabilityReader(): AvailabilityReaderInterface
     {
         return new AvailabilityReader(
@@ -122,9 +107,6 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Expander\Wishlist\AvailabilityWishlistItemExpanderInterface
-     */
     public function createAvailabilityWishlistItemExpander(): AvailabilityWishlistItemExpanderInterface
     {
         return new AvailabilityWishlistItemExpander(
@@ -134,33 +116,21 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStockFacadeInterface
-     */
     public function getStockFacade(): AvailabilityToStockFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_STOCK);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToOmsFacadeInterface
-     */
     public function getOmsFacade(): AvailabilityToOmsFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_OMS);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToTouchFacadeInterface
-     */
     public function getTouchFacade(): AvailabilityToTouchFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_TOUCH);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\Model\ProductsAvailableCheckoutPreConditionInterface
-     */
     public function createProductsAvailablePreCondition(): ProductsAvailableCheckoutPreConditionInterface
     {
         return new ProductsAvailableCheckoutPreCondition(
@@ -171,25 +141,16 @@ class AvailabilityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStoreFacadeInterface
-     */
     public function getStoreFacade(): AvailabilityToStoreFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToEventFacadeInterface
-     */
     public function getEventFacade(): AvailabilityToEventFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_EVENT);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToProductFacadeInterface
-     */
     public function getProductFacade(): AvailabilityToProductFacadeInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::FACADE_PRODUCT);

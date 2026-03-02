@@ -47,9 +47,6 @@ class AvailabilityServiceTest extends Unit
         $this->assertSame($expectedValue, $isAbstractProductNeverOutOfStock);
     }
 
-    /**
-     * @return array
-     */
     public function getIsAbstractProductNeverOutOfStockDataProvider(): array
     {
         return [

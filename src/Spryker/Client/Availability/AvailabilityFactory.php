@@ -20,9 +20,6 @@ use Spryker\Shared\KeyBuilder\KeyBuilderInterface;
 
 class AvailabilityFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\Availability\Storage\AvailabilityStorageInterface
-     */
     public function createCurrentLocaleAvailabilityStorage(): AvailabilityStorageInterface
     {
         return new AvailabilityStorage(
@@ -51,33 +48,21 @@ class AvailabilityFactory extends AbstractFactory
         return $this->getProvidedDependency(AvailabilityDependencyProvider::KV_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\Availability\Dependency\Client\AvailabilityToZedRequestClientInterface
-     */
     public function getZedRequestClient(): AvailabilityToZedRequestClientInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::CLIENT_ZED_REQUEST);
     }
 
-    /**
-     * @return \Spryker\Shared\KeyBuilder\KeyBuilderInterface
-     */
     public function createKeyBuilder(): KeyBuilderInterface
     {
         return new AvailabilityResourceKeyBuilder();
     }
 
-    /**
-     * @return \Spryker\Client\Availability\Dependency\Client\AvailabilityToLocaleInterface
-     */
     public function getLocaleClient(): AvailabilityToLocaleInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Client\Availability\Dependency\Client\AvailabilityToStoreClientInterface
-     */
     public function getStoreClient(): AvailabilityToStoreClientInterface
     {
         return $this->getProvidedDependency(AvailabilityDependencyProvider::CLIENT_STORE);

@@ -24,9 +24,6 @@ class AvailabilityToStoreClientBridge implements AvailabilityToStoreClientInterf
         $this->storeClient = $storeClient;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer
     {
         return $this->storeClient->getCurrentStore();

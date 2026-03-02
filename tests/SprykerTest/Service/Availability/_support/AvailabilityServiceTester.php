@@ -28,9 +28,6 @@ class AvailabilityServiceTester extends Actor
 {
     use _generated\AvailabilityServiceTesterActions;
 
-    /**
-     * @return \Spryker\Service\Availability\AvailabilityServiceInterface
-     */
     public function getService(): AvailabilityServiceInterface
     {
         return $this->getLocator()->availability()->service();

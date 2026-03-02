@@ -32,9 +32,6 @@ class AvailabilityToProductQueryContainerBridge implements AvailabilityToProduct
         return $this->queryContainer->queryProductAbstract();
     }
 
-    /**
-     * @return \Orm\Zed\Product\Persistence\SpyProductQuery
-     */
     public function queryProduct(): SpyProductQuery
     {
         return $this->queryContainer->queryProduct();

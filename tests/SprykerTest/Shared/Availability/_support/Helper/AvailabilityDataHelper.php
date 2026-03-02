@@ -32,13 +32,6 @@ class AvailabilityDataHelper extends Module
      */
     protected const DEFAULT_QUANTITY = 10;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     * @param \Spryker\DecimalObject\Decimal|null $quantity
-     * @param int|null $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract
-     */
     public function haveAvailabilityAbstract(
         ProductConcreteTransfer $productConcreteTransfer,
         ?Decimal $quantity = null,
@@ -103,17 +96,11 @@ class AvailabilityDataHelper extends Module
         return $productConcreteAvailabilityTransfer;
     }
 
-    /**
-     * @return void
-     */
     public function ensureAvailabilityTableIsEmpty(): void
     {
         SpyAvailabilityQuery::create()->deleteAll();
     }
 
-    /**
-     * @return void
-     */
     public function clearAvailabilityHandlerCache(): void
     {
         $reflectionProperty = new ReflectionProperty(AvailabilityHandler::class, 'allStoreTransfersCache');
@@ -121,17 +108,11 @@ class AvailabilityDataHelper extends Module
         $reflectionProperty->setValue(null, []);
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface
-     */
     private function getAvailabilityFacade(): AvailabilityFacadeInterface
     {
         return $this->getLocator()->availability()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
     protected function getStoreFacade(): StoreFacadeInterface
     {
         return $this->getLocator()->store()->facade();

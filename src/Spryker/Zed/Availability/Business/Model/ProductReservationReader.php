@@ -39,11 +39,6 @@ class ProductReservationReader implements ProductReservationReaderInterface
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityQueryContainerInterface $availabilityQueryContainer
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStockFacadeInterface $stockFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         AvailabilityQueryContainerInterface $availabilityQueryContainer,
         AvailabilityToStockFacadeInterface $stockFacade,
@@ -88,13 +83,6 @@ class ProductReservationReader implements ProductReservationReaderInterface
         return $this->mapAbstractProductAvailabilityEntityToTransfer($productAbstractEntity);
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param int $idLocale
-     * @param int $idStore
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findProductAbstractAvailability(int $idProductAbstract, int $idLocale, int $idStore): ?ProductAbstractAvailabilityTransfer
     {
         $storeTransfer = $this->storeFacade->getStoreById($idStore);
@@ -119,11 +107,6 @@ class ProductReservationReader implements ProductReservationReaderInterface
         return $this->mapAbstractProductAvailabilityEntityToTransfer($productAbstractEntity);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityRequestTransfer $productConcreteAvailabilityRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     public function findProductConcreteAvailability(
         ProductConcreteAvailabilityRequestTransfer $productConcreteAvailabilityRequestTransfer
     ): ?ProductConcreteAvailabilityTransfer {
@@ -146,11 +129,6 @@ class ProductReservationReader implements ProductReservationReaderInterface
         return $this->mapProductConcreteAvailabilityEntityToTransfer($availabilityEntity);
     }
 
-    /**
-     * @param string $reservationQuantitySet
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateReservation(string $reservationQuantitySet): Decimal
     {
         $reservationItems = explode(',', $reservationQuantitySet);
@@ -212,11 +190,6 @@ class ProductReservationReader implements ProductReservationReaderInterface
         return (new ProductAbstractAvailabilityTransfer())->fromArray($availabilityData, true);
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return bool
-     */
     protected function getAbstractNeverOutOfStock(SpyProductAbstract $productAbstractEntity): bool
     {
         $neverOutOfStockSet = explode(',', $productAbstractEntity->getVirtualColumn(AvailabilityQueryContainer::CONCRETE_NEVER_OUT_OF_STOCK_SET) ?? '');

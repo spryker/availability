@@ -29,12 +29,6 @@ interface AvailabilityEntityManagerInterface
         string $abstractSku
     ): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer
-     */
     public function saveProductAbstractAvailability(
         ProductAbstractAvailabilityTransfer $productAbstractAvailabilityTransfer,
         StoreTransfer $storeTransfer

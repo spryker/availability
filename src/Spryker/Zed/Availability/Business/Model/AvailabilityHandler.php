@@ -94,16 +94,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
      */
     protected AvailabilityToStoreFacadeInterface $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityRepositoryInterface $availabilityRepository
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityEntityManagerInterface $availabilityEntityManager
-     * @param \Spryker\Zed\Availability\Business\Model\ProductAvailabilityCalculatorInterface $availabilityCalculator
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToTouchFacadeInterface $touchFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStockFacadeInterface $stockFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToEventFacadeInterface $eventFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToProductFacadeInterface $productFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         AvailabilityRepositoryInterface $availabilityRepository,
         AvailabilityEntityManagerInterface $availabilityEntityManager,
@@ -124,11 +114,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @param string $concreteSku
-     *
-     * @return void
-     */
     public function updateAvailability(string $concreteSku): void
     {
         $productAvailabilityDataTransfer = $this->availabilityRepository->getProductConcreteWithAvailability($concreteSku);
@@ -136,13 +121,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         $this->saveAllAvailabilities($productAvailabilityDataTransfer);
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return int
-     */
     public function saveAndTouchAvailability(string $concreteSku, Decimal $quantity, StoreTransfer $storeTransfer): int
     {
         $wasProductConcreteAvailable = $this->isProductConcreteAvailable(
@@ -187,12 +165,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         $this->touchFacade->touchActive(AvailabilityConfig::RESOURCE_TYPE_AVAILABILITY_ABSTRACT, $idAvailabilityAbstract);
     }
 
-    /**
-     * @param int $idProductConcrete
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer
-     */
     public function updateProductConcreteAvailabilityById(
         int $idProductConcrete,
         StoreTransfer $storeTransfer
@@ -202,12 +174,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return $this->updateProductConcreteAvailabilityBySku($concreteSku, $storeTransfer);
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer
-     */
     public function updateProductConcreteAvailabilityBySku(
         string $concreteSku,
         StoreTransfer $storeTransfer
@@ -238,12 +204,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return $productConcreteAvailabilityTransfer;
     }
 
-    /**
-     * @param string $productAbstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer
-     */
     public function updateProductAbstractAvailabilityBySku(
         string $productAbstractSku,
         StoreTransfer $storeTransfer
@@ -259,11 +219,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return $productAbstractAvailabilityTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityPostEditResponseTransfer
-     */
     public function updateAvailabilityByDynamicEntityRequest(
         DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
     ): DynamicEntityPostEditResponseTransfer {
@@ -295,11 +250,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return $productIds;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null $productConcreteAvailabilityTransfer
-     *
-     * @return bool
-     */
     protected function isProductConcreteAvailable(?ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer): bool
     {
         if ($productConcreteAvailabilityTransfer === null) {
@@ -353,12 +303,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return $concreteSku;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return void
-     */
     protected function triggerProductIsAvailableAgainEvent(string $concreteSku, StoreTransfer $storeTransfer): void
     {
         $availabilityNotificationDataTransfer = (new AvailabilityNotificationDataTransfer())
@@ -371,9 +315,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityPostEditResponseTransfer
-     */
     protected function createDynamicEntityPostEditResponseTransfer(): DynamicEntityPostEditResponseTransfer
     {
         return new DynamicEntityPostEditResponseTransfer();
@@ -481,11 +422,6 @@ class AvailabilityHandler implements AvailabilityHandlerInterface
         return static::$allStoreTransfersCache;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAvailabilityDataTransfer $productAvailabilityDataTransfer
-     *
-     * @return void
-     */
     protected function saveAllAvailabilities(ProductAvailabilityDataTransfer $productAvailabilityDataTransfer): void
     {
         if (!$productAvailabilityDataTransfer->getProductConcrete() && !$productAvailabilityDataTransfer->getProductAbstract()) {

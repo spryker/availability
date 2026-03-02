@@ -12,12 +12,6 @@ use Spryker\DecimalObject\Decimal;
 
 interface AvailabilityToOmsFacadeInterface
 {
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function getOmsReservedProductQuantityForSku(string $sku, StoreTransfer $storeTransfer): Decimal;
 
     /**

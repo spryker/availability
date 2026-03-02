@@ -16,9 +16,6 @@ use Spryker\Service\Kernel\AbstractServiceFactory;
  */
 class AvailabilityServiceFactory extends AbstractServiceFactory
 {
-    /**
-     * @return \Spryker\Service\Availability\Checker\StockCheckerInterface
-     */
     public function createStockChecker(): StockCheckerInterface
     {
         return new StockChecker($this->getConfig());

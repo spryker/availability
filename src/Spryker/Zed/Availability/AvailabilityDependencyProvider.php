@@ -125,11 +125,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addEventFacade(Container $container): Container
     {
         $container->set(static::FACADE_EVENT, function (Container $container) {
@@ -183,11 +178,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
@@ -197,11 +187,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AVAILABILITY_STRATEGY, function () {
@@ -211,11 +196,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addBatchAvailabilityStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_BATCH_AVAILABILITY_STRATEGY, function () {
@@ -225,11 +205,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCartItemQuantityCounterStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CART_ITEM_QUANTITY_COUNTER_STRATEGY, function () {
@@ -277,11 +252,6 @@ class AvailabilityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityService(Container $container): Container
     {
         $container->set(static::SERVICE_AVAILABILITY, function (Container $container) {

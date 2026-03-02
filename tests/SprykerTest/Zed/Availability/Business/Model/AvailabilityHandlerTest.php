@@ -57,18 +57,12 @@ class AvailabilityHandlerTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
         $this->tester->clearAvailabilityHandlerCache();
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityShouldTouchWhenStockUpdated(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -110,9 +104,6 @@ class AvailabilityHandlerTest extends Unit
         $availabilityHandler->updateAvailability($productTransfer->getSku());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityShouldTouchAndUpdate(): void
     {
         $productConcreteTransfer = $this->tester->haveProduct([ProductConcreteTransfer::SKU => static::PRODUCT_ABSTRACT_SKU]);
@@ -154,16 +145,6 @@ class AvailabilityHandlerTest extends Unit
         $availabilityHandler->updateAvailability(static::PRODUCT_SKU);
     }
 
-    /**
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityRepositoryInterface $availabilityRepositoryMock
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityEntityManagerInterface $availabilityEntityManagerMock
-     * @param \Spryker\Zed\Availability\Business\Model\ProductAvailabilityCalculatorInterface $availabilityCalculatorMock
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToTouchFacadeInterface $touchFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStockFacadeInterface|null $availabilityToStockFacade
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToEventFacadeInterface|null $availabilityToEventFacade
-     *
-     * @return \Spryker\Zed\Availability\Business\Model\AvailabilityHandlerInterface
-     */
     protected function createAvailabilityHandler(
         AvailabilityRepositoryInterface $availabilityRepositoryMock,
         AvailabilityEntityManagerInterface $availabilityEntityManagerMock,

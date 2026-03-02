@@ -31,11 +31,6 @@ class AvailabilityWishlistItemExpander implements AvailabilityWishlistItemExpand
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Availability\Business\Model\ProductAvailabilityReaderInterface $productAvailabilityReader
-     * @param \Spryker\Zed\Availability\Business\Model\SellableInterface $sellable
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         ProductAvailabilityReaderInterface $productAvailabilityReader,
         SellableInterface $sellable,
@@ -46,11 +41,6 @@ class AvailabilityWishlistItemExpander implements AvailabilityWishlistItemExpand
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     public function expandWishlistItemWithAvailability(WishlistItemTransfer $wishlistItemTransfer): WishlistItemTransfer
     {
         $productConcreteAvailabilityTransfer = $this->findProductConcreteAvailability($wishlistItemTransfer);
@@ -62,11 +52,6 @@ class AvailabilityWishlistItemExpander implements AvailabilityWishlistItemExpand
         return $wishlistItemTransfer->setProductConcreteAvailability($productConcreteAvailabilityTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     public function expandWishlistItemWithSellable(WishlistItemTransfer $wishlistItemTransfer): WishlistItemTransfer
     {
         $productConcreteAvailabilityTransfer = $this->findProductConcreteAvailability($wishlistItemTransfer);
@@ -91,11 +76,6 @@ class AvailabilityWishlistItemExpander implements AvailabilityWishlistItemExpand
         return $wishlistItemTransfer->setIsSellable($isWishlistItemSellable);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer|null
-     */
     protected function findProductConcreteAvailability(WishlistItemTransfer $wishlistItemTransfer): ?ProductConcreteAvailabilityTransfer
     {
         $storeTransfer = $this->storeFacade->getCurrentStore();

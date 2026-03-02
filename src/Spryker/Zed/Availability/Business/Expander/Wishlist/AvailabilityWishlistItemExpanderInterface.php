@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\WishlistItemTransfer;
 
 interface AvailabilityWishlistItemExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     public function expandWishlistItemWithAvailability(WishlistItemTransfer $wishlistItemTransfer): WishlistItemTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     public function expandWishlistItemWithSellable(WishlistItemTransfer $wishlistItemTransfer): WishlistItemTransfer;
 }

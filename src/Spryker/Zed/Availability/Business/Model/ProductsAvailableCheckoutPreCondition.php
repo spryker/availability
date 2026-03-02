@@ -98,12 +98,6 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return $isPassed;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\SellableItemsRequestTransfer
-     */
     protected function createSellableItemsRequestTransfer(QuoteTransfer $quoteTransfer, StoreTransfer $storeTransfer): SellableItemsRequestTransfer
     {
         $sellableItemsRequestTransfer = new SellableItemsRequestTransfer();
@@ -130,12 +124,6 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return $sellableItemsRequestTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function getAccumulatedItemQuantityForGivenItemSku(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer
@@ -155,12 +143,6 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return $this->calculateCurrentCartQuantityForGivenSku($quoteTransfer, $sku);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $sku
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateCurrentCartQuantityForGivenSku(QuoteTransfer $quoteTransfer, string $sku): Decimal
     {
         $quantity = new Decimal(0);
@@ -179,12 +161,6 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return $quantity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartItemQuantityTransfer|null
-     */
     protected function executeCartItemQuantityCounterStrategyPlugin(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer
@@ -221,12 +197,6 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return new CheckoutErrorTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponse
-     * @param string $sku
-     *
-     * @return void
-     */
     protected function addAvailabilityErrorToCheckoutResponse(CheckoutResponseTransfer $checkoutResponse, string $sku): void
     {
         $checkoutErrorTransfer = $this->createCheckoutErrorTransfer();

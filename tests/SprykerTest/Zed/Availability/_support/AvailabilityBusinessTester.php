@@ -37,12 +37,6 @@ class AvailabilityBusinessTester extends Actor
 {
     use _generated\AvailabilityBusinessTesterActions;
 
-    /**
-     * @param string $productSku
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailability|null
-     */
     public function findAvailabilityConcreteForStore(string $productSku, int $idStore): ?SpyAvailability
     {
         return $this->getAvailabilityQuery()
@@ -51,28 +45,16 @@ class AvailabilityBusinessTester extends Actor
             ->findOne();
     }
 
-    /**
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityQuery
-     */
     public function getAvailabilityQuery(): SpyAvailabilityQuery
     {
         return SpyAvailabilityQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery
-     */
     public function getAvailabilityAbstractQuery(): SpyAvailabilityAbstractQuery
     {
         return SpyAvailabilityAbstractQuery::create();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAvailabilityDataTransfer
-     */
     public function prepareProductAvailabilityDataTransfer(
         ProductConcreteTransfer $productConcreteTransfer,
         StoreTransfer $storeTransfer

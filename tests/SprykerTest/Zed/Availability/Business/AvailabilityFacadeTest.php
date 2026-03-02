@@ -100,18 +100,12 @@ class AvailabilityFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
         $this->tester->clearAvailabilityHandlerCache();
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductSellableWhenNeverOutOfStockShouldReturnSuccess(): void
     {
         // Arrange
@@ -132,9 +126,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertTrue($isProductSellable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductSellableWhenStockIsEmptyShouldReturnFailure(): void
     {
         // Arrange
@@ -154,9 +145,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertFalse($isProductSellable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductSellableWhenStockFulfilledShouldReturnSuccess(): void
     {
         // Arrange
@@ -202,9 +190,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertTrue($calculatedQuantity->equals($quantity));
     }
 
-    /**
-     * @return array
-     */
     public function provideTestDecimalQuantity(): array
     {
         return [
@@ -213,9 +198,6 @@ class AvailabilityFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testCheckAvailabilityPreConditionShouldNotWriteErrorsWhenAvailabilityIsSatisfied(): void
     {
         // Arrange
@@ -236,9 +218,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertEmpty($checkoutResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckAvailabilityPreConditionShouldWriteErrorWhenAvailabilityIsNotSatisfied(): void
     {
         // Arrange
@@ -259,9 +238,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(1, $checkoutResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckAvailabilityPreConditionExecutesAvailabilityStrategyPluginStack(): void
     {
         // Arrange
@@ -294,9 +270,6 @@ class AvailabilityFacadeTest extends Unit
             ->checkoutAvailabilityPreCondition($quoteTransfer, new CheckoutResponseTransfer());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckAvailabilityPreConditionWillExecuteBatchAvailabilityStrategyPlugins(): void
     {
         // Arrange
@@ -329,9 +302,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertEmpty($checkoutResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityShouldStoreNewQuantity(): void
     {
         // Arrange
@@ -359,9 +329,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(50, (new Decimal($availabilityAbstractEntity->getQuantity()))->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityWhenItsEmptyShouldStoreNewQuantity(): void
     {
         // Arrange
@@ -382,9 +349,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(50, (new Decimal($availabilityEntity->getQuantity()))->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityWhenSetToEmptyShouldStoreEmptyQuantity(): void
     {
         // Arrange
@@ -408,9 +372,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(0, (new Decimal($availabilityAbstractEntity->getQuantity()))->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityShouldStoreEmptyQuantityWhenStockProductDoesNotHaveRelationToSameStore(): void
     {
         // Arrange
@@ -454,9 +415,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertTrue((new Decimal(0))->equals($availabilityAtEntity->getQuantity()));
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAbstractAvailabilityForStoreWithCachedAvailability(): void
     {
         // Arrange
@@ -476,9 +434,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(2, $productAbstractAvailabilityTransfer->getAvailability()->trim()->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAbstractAvailabilityForStoreWithInvalidSku(): void
     {
         // Arrange
@@ -495,9 +450,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertNull($productAbstractAvailabilityTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAbstractAvailabilityForStoreWithStockAndNoCachedAvailability(): void
     {
         // Arrange
@@ -536,9 +488,6 @@ class AvailabilityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductConcreteAvailabilityBySkuForStoreWithCachedAvailability(): void
     {
         // Arrange
@@ -559,9 +508,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame($productQuantity, $productConcreteAvailabilityTransfer->getAvailability()->trim()->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductConcreteAvailabilityBySkuForStoreWithStockAndNoCachedAvailability(): void
     {
         // Arrange
@@ -586,9 +532,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame($productQuantity, $productConcreteAvailabilityTransfer->getAvailability()->trim()->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductConcreteAvailabilityBySkuForStoreWithInvalidSku(): void
     {
         // Arrange
@@ -605,9 +548,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertNull($productConcreteAvailabilityTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductAvailabilityForStoreShouldStoreAvailability(): void
     {
         // Arrange
@@ -633,9 +573,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertTrue($productConcreteAvailabilityTransfer->getAvailability()->equals(2));
     }
 
-    /**
-     * @return void
-     */
     public function testIsProductConcreteAvailable(): void
     {
         // Arrange
@@ -661,9 +598,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertFalse($productAvailable2);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterAvailableProductsWithNeverOutOfStock(): void
     {
         // Arrange
@@ -685,9 +619,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(1, $productConcreteTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterAvailableProductsWithQuantity(): void
     {
         // Arrange
@@ -709,9 +640,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(1, $productConcreteTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterAvailableProductsWithZeroQuantity(): void
     {
         // Arrange
@@ -733,9 +661,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(0, $productConcreteTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterAvailableProductsWithoutStock(): void
     {
         // Arrange
@@ -751,9 +676,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(0, $productConcreteTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterAvailableProductsWithSeveralItems(): void
     {
         // Arrange
@@ -785,9 +707,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(1, $productConcreteTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteAvailabilityCollectionReturnsAllAvailabilitiesWithNoCriteria(): void
     {
         // Arrange
@@ -809,9 +728,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(3, $productConcreteAvailabilityCollectionTransfer->getProductConcreteAvailabilities());
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteAvailabilityCollectionReturnsAvailabilitiesFilteredBySkus(): void
     {
         // Arrange
@@ -839,9 +755,6 @@ class AvailabilityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteAvailabilityCollectionReturnsAvailabilitiesFilteredByStoreIds(): void
     {
         // Arrange
@@ -870,9 +783,6 @@ class AvailabilityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteAvailabilityCollectionReturnsNoAvailabilitiesIfNoAvailabilitiesMeetCriteria(): void
     {
         // Arrange
@@ -894,9 +804,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertCount(0, $productConcreteAvailabilityCollectionTransfer->getProductConcreteAvailabilities());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandWishlistItemWithAvailabilitySuccess(): void
     {
         // Arrange
@@ -919,9 +826,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame($wishlsitItemTransfer->getProductConcreteAvailability()->getIsNeverOutOfStock(), $productConcreteAvailabilityTransfer->getIsNeverOutOfStock());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandWishlistItemWithSellableSuccess(): void
     {
         // Arrange
@@ -943,9 +847,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertTrue($wishlsitItemTransfer->getIsSellable());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityByDynamicEntityRequestDoesNotUpdateAvailabilityForWrongTableName(): void
     {
         // Arrange
@@ -979,9 +880,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(5, (new Decimal($availabilityAbstractEntity->getQuantity()))->toInt());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateAvailabilityByDynamicEntityRequestUpdatesAvailabilityForValidTableName(): void
     {
         // Arrange
@@ -1015,9 +913,6 @@ class AvailabilityFacadeTest extends Unit
         $this->assertSame(50, (new Decimal($availabilityAbstractEntity->getQuantity()))->toInt());
     }
 
-    /**
-     * @return \Spryker\Zed\Availability\Business\AvailabilityFacade
-     */
     protected function getAvailabilityFacade(): AvailabilityFacade
     {
         /** @var \Spryker\Zed\Availability\Business\AvailabilityFacade $availabilityFacade */
@@ -1036,14 +931,6 @@ class AvailabilityFacadeTest extends Unit
         return $availabilityFacade;
     }
 
-    /**
-     * @param string $abstractSku
-     * @param string $concreteSku
-     * @param array $stockData
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Orm\Zed\Stock\Persistence\SpyStockProduct
-     */
     protected function createProductWithStock(
         string $abstractSku,
         string $concreteSku,
@@ -1084,9 +971,6 @@ class AvailabilityFacadeTest extends Unit
         return $stockProductEntity;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function createQuoteTransfer(): QuoteTransfer
     {
         $storeTransfer = $this->tester->haveStore([StoreTransfer::NAME => static::STORE_NAME_DE]);
@@ -1100,14 +984,6 @@ class AvailabilityFacadeTest extends Unit
         return $quoteTransfer;
     }
 
-    /**
-     * @param string $abstractSku
-     * @param string $concreteSku
-     * @param \Spryker\DecimalObject\Decimal $quantity
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailability
-     */
     protected function createProductAvailability(
         string $abstractSku,
         string $concreteSku,

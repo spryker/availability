@@ -23,10 +23,6 @@ class AvailabilityReader implements AvailabilityReaderInterface
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Availability\Persistence\AvailabilityRepositoryInterface $availabilityRepository
-     * @param \Spryker\Zed\Availability\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         AvailabilityRepositoryInterface $availabilityRepository,
         AvailabilityToStoreFacadeInterface $storeFacade
@@ -129,11 +125,6 @@ class AvailabilityReader implements AvailabilityReaderInterface
         return $productConcreteIds;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer
-     *
-     * @return bool
-     */
     protected function isProductConcreteAvailable(ProductConcreteAvailabilityTransfer $productConcreteAvailabilityTransfer): bool
     {
         $isProductConcreteAvailable = $productConcreteAvailabilityTransfer->getAvailability() !== null

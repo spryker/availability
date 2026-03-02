@@ -9,10 +9,5 @@ namespace Spryker\Service\Availability\Checker;
 
 interface StockCheckerInterface
 {
-    /**
-     * @param string $productConcretesNeverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isAbstractProductNeverOutOfStock(string $productConcretesNeverOutOfStockSet): bool;
 }

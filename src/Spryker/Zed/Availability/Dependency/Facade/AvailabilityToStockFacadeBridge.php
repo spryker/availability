@@ -27,34 +27,16 @@ class AvailabilityToStockFacadeBridge implements AvailabilityToStockFacadeInterf
         $this->stockFacade = $stockFacade;
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return bool
-     */
     public function isProductAbstractNeverOutOfStockForStore(string $abstractSku, StoreTransfer $storeTransfer): bool
     {
         return $this->stockFacade->isProductAbstractNeverOutOfStockForStore($abstractSku, $storeTransfer);
     }
 
-    /**
-     * @param string $abstractSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductAbstractStockForStore(string $abstractSku, StoreTransfer $storeTransfer): Decimal
     {
         return $this->stockFacade->calculateProductAbstractStockForStore($abstractSku, $storeTransfer);
     }
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateProductStockForStore(string $sku, StoreTransfer $storeTransfer): Decimal
     {
         return $this->stockFacade->calculateProductStockForStore($sku, $storeTransfer);
@@ -89,11 +71,6 @@ class AvailabilityToStockFacadeBridge implements AvailabilityToStockFacadeInterf
         return $this->stockFacade->getStoresWhereProductStockIsDefined($sku);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockStoreCollectionTransfer
-     */
     public function getStockStoreCollection(StockStoreCriteriaTransfer $stockStoreCollectionCriteriaTransfer): StockStoreCollectionTransfer
     {
         return $this->stockFacade->getStockStoreCollection($stockStoreCollectionCriteriaTransfer);

@@ -34,9 +34,6 @@ class AvailabilityToTouchFacadeBridge implements AvailabilityToTouchFacadeInterf
         return $this->touchFacade->touchActive($itemType, $idItem, $keyChange);
     }
 
-    /**
-     * @return bool
-     */
     public function isTouchEnabled(): bool
     {
         /** @phpstan-ignore function.alreadyNarrowedType */
