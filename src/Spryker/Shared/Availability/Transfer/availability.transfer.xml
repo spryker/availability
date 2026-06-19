@@ -74,6 +74,7 @@
         <property name="message" type="string"/>
         <property name="errorType" type="string"/>
         <property name="parameters" type="array" singular="parameters"/>
+        <property name="groupKey" type="string"/>
     </transfer>
 
     <transfer name="CheckoutResponse">
@@ -93,6 +94,7 @@
         <property name="amount" type="decimal"/>
         <property name="stockQuantity" type="float" strict="true"/>
         <property name="isNeverOutOfStock" type="bool" strict="true"/>
+        <property name="groupKey" type="string"/>
     </transfer>
 
     <transfer name="StockProduct">
@@ -105,6 +107,7 @@
     <transfer name="ProductAvailabilityCriteria">
         <property name="productConcreteSkus" type="string[]" singular="productConcreteSku"/>
         <property name="storeIds" type="int[]" singular="idStore"/>
+        <property name="groupKey" type="string"/>
     </transfer>
 
     <transfer name="ReservationRequest">

@@ -91,7 +91,11 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
                 continue;
             }
 
-            $this->addAvailabilityErrorToCheckoutResponse($checkoutResponse, $sellableItemResponseTransfer->getSkuOrFail());
+            $this->addAvailabilityErrorToCheckoutResponse(
+                $checkoutResponse,
+                $sellableItemResponseTransfer->getSkuOrFail(),
+                $sellableItemResponseTransfer->getProductAvailabilityCriteria()?->getGroupKey(),
+            );
             $isPassed = false;
         }
 
@@ -197,18 +201,17 @@ class ProductsAvailableCheckoutPreCondition implements ProductsAvailableCheckout
         return new CheckoutErrorTransfer();
     }
 
-    protected function addAvailabilityErrorToCheckoutResponse(CheckoutResponseTransfer $checkoutResponse, string $sku): void
+    protected function addAvailabilityErrorToCheckoutResponse(CheckoutResponseTransfer $checkoutResponse, string $sku, ?string $groupKey = null): void
     {
         $checkoutErrorTransfer = $this->createCheckoutErrorTransfer();
         $checkoutErrorTransfer
             ->setErrorCode($this->availabilityConfig->getProductUnavailableErrorCode())
             ->setMessage(static::CHECKOUT_PRODUCT_UNAVAILABLE_TRANSLATION_KEY)
-            ->setErrorType(
-                $this->availabilityConfig->getAvailabilityErrorType(),
-            )
+            ->setErrorType($this->availabilityConfig->getAvailabilityErrorType())
             ->setParameters([
                 $this->availabilityConfig->getAvailabilityProductSkuParameter() => $sku,
-            ]);
+            ])
+            ->setGroupKey($groupKey);
 
         $checkoutResponse
             ->addError($checkoutErrorTransfer)
