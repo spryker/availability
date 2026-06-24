@@ -10,6 +10,8 @@ namespace Spryker\Shared\Availability;
 interface AvailabilityConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_AVAILABILITY_ABSTRACT = 'availability_abstract';

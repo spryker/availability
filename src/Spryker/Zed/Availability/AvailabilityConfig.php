@@ -12,11 +12,15 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class AvailabilityConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var int
      */
     public const ERROR_CODE_PRODUCT_UNAVAILABLE = 4002;
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_AVAILABILITY_ABSTRACT = 'availability_abstract';
