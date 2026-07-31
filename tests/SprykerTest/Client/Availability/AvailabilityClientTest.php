@@ -292,9 +292,9 @@ class AvailabilityClientTest extends Unit
 
     /**
      * @param array $storageReturn
-     * @param $availabilityResourceKeyBuilderMock
-     * @param $currentLocale
-     * @param $availabilityToStoreClientMock
+     * @param \Spryker\Client\Availability\KeyBuilder\AvailabilityResourceKeyBuilder|\PHPUnit\Framework\MockObject\MockObject|null $availabilityResourceKeyBuilderMock
+     * @param string $currentLocale
+     * @param \Spryker\Client\Availability\Dependency\Client\AvailabilityToStoreClientInterface|\PHPUnit\Framework\MockObject\MockObject|null $availabilityToStoreClientMock
      *
      * @return \Spryker\Client\Availability\Storage\AvailabilityStorage
      */
