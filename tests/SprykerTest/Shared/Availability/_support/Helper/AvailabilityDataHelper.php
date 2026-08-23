@@ -104,7 +104,6 @@ class AvailabilityDataHelper extends Module
     public function clearAvailabilityHandlerCache(): void
     {
         $reflectionProperty = new ReflectionProperty(AvailabilityHandler::class, 'allStoreTransfersCache');
-        $reflectionProperty->setAccessible(true);
         $reflectionProperty->setValue(null, []);
     }
 
