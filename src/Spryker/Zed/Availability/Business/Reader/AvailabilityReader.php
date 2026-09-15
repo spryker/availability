@@ -47,7 +47,7 @@ class AvailabilityReader implements AvailabilityReaderInterface
         foreach ($productConcreteTransfers as $productConcreteTransfer) {
             $storeTransfers = $productConcreteTransfer->getStores();
             if ($storeTransfers->count() === 0) {
-                $storeTransfers = [$this->storeFacade->getCurrentStore()];
+                $storeTransfers = [$this->storeFacade->getCurrentStore(true)];
             }
 
             foreach ($storeTransfers as $storeTransfer) {
